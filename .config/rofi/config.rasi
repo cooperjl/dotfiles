@@ -1,0 +1,12 @@
+configuration { 
+    font: "JetBrainsMono Nerd Font 10";
+    show-icons: true;
+    modi: "drun";
+    display-drun: "";
+    display-run: "Run";
+    drun-display-format: "{name}";
+    disable-history: false;
+    sidebar-mode: false;
+}
+
+@theme "layout"

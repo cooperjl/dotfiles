@@ -1,0 +1,4 @@
+--save /etc/pacman.d/mirrorlist
+--country United Kingdom
+--protocol https
+--latest 5
