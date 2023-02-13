@@ -1,0 +1,9 @@
+/* everforest colours */
+
+* {
+  al:  #00000000;
+  bg:  #2b3339;
+  se:  #323c41;
+  ac:  #7fbbb3;
+  fg:  #d4be98;
+}
