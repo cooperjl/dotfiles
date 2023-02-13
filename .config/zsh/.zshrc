@@ -13,6 +13,11 @@ unsetopt beep
 
 # Aliases
 alias dotcfg="git --git-dir=$DOTFILES --work-tree=$HOME"
+alias nvidia-settings="nvidia-settings --config='$XDG_CONFIG_HOME'/nvidia/settings"
+alias lf=lfub
+alias hx=helix
+alias steamtinkerlaunch="flatpak run --command=steamtinkerlaunch com.valvesoftware.Steam"
+alias protontricks="flatpak run com.github.Matoking.protontricks"
 
 # Completion
 autoload -Uz compinit
@@ -44,13 +49,25 @@ function zle-keymap-select () {
         viins|main) echo -ne '\e[5 q';; # beam
     esac
 }
+
 zle -N zle-keymap-select
+
 zle-line-init() {
     zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
     echo -ne "\e[5 q"
 }
+
 zle -N zle-line-init
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
+
+LFCD="$HOME/.config/lf/lfcd.sh"
+if [ -f "$LFCD" ]; then
+  source "$LFCD"
+fi
+
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh 2>/dev/null

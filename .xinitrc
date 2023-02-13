@@ -16,5 +16,7 @@ fi
 setxkbmap -layout gb
 xsetroot -cursor_name left_ptr
 
-sxhkd &
-exec bspwm 
+#sxhkd &
+#exec bspwm 
+
+exec awesome

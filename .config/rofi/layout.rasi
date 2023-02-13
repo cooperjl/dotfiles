@@ -1,4 +1,4 @@
-@import "gruvbox.rasi"
+@import "everforest.rasi"
 
 window {
     background-color:               @bg;
