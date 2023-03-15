@@ -18,6 +18,7 @@ local options = {
   scrolloff = 8,
   sidescrolloff = 8,
   timeoutlen = 100,
+  showmode = false,
 }
 
 for k, v in pairs(options) do

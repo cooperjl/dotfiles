@@ -31,6 +31,8 @@ alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
 
 export DOTFILES="$XDG_DATA_HOME/dotfiles"
 
+export JAVA_HOME="/usr/lib/jvm/java-17-openjdk/"
+
 # Start x11
 if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
   exec startx
