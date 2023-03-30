@@ -8,7 +8,6 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 
 -- require("awful.hotkeys_popup.keys")
 
-
 -- modkey
 modkey = "Mod4"
 
@@ -20,7 +19,7 @@ local alt   = "Mod1"
 
 -- {{{ Mouse bindings
 root.buttons(gears.table.join(
-    awful.button({ }, 3, function () mymainmenu:toggle() end),
+    -- awful.button({ }, 3, function () mymainmenu:toggle() end),
     awful.button({ }, 4, awful.tag.viewnext),
     awful.button({ }, 5, awful.tag.viewprev)
 ))
@@ -49,8 +48,10 @@ globalkeys = gears.table.join(
     --    end,
     --    {description = "focus previous by index", group = "client"}
     --),
-    awful.key({ modkey,           }, "w", function () mymainmenu:show() end,
-              {description = "show main menu", group = "awesome"}),
+    
+    -- removed main menu, as I did not use it.
+    --awful.key({ modkey,           }, "w", function () mymainmenu:show() end,
+    --          {description = "show main menu", group = "awesome"}),
 
     -- Layout manipulation ---->> i do not understand lots of this <<----
     --awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end,
