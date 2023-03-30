@@ -6,8 +6,8 @@ stty stop undef
 PS1="[%n@%m %~]$%b "
 
 HISTFILE="$XDG_STATE_HOME/zsh/history"
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=10000000
+SAVEHIST=10000000
 
 unsetopt beep
 

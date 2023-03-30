@@ -14,7 +14,7 @@ awful.rules.rules = {
         keys = clientkeys,
         buttons = clientbuttons,
         screen = awful.screen.preferred,
-        placement = awful.placement.no_overlap+awful.placement.no_offscreen
+        placement = awful.placement.no_overlap+awful.placement.no_offscreen,
      }
     },
 
@@ -39,18 +39,4 @@ awful.rules.rules = {
     { rule_any = { type = { "normal", "dialog" }
       }, properties = { titlebars_enabled = false }
     },
-    
-    -- Steam games.
-    { rule_any = { 
-      class = { "Steam" }
-
-      }, properties = { 
-          titlebars_enabled = false,
-          floating = true,
-          border_width = 0,
-          border_color = 0,
-          size_hints_honor = false, 
-      },
-    },
 }
-
