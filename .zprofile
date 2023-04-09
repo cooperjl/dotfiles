@@ -11,6 +11,7 @@ export QT_STYLE_OVERRIDE=Adwaita-dark
 export EDITOR="nvim"
 export TERMINAL="alacritty"
 export BROWSER="firefox"
+export XDG_CURRENT_DESKTOP="awesome"
 
 # Home cleanup
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -27,7 +28,6 @@ export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 export JAVA_TOOL_OPTIONS="-Djavafx.cachedir=$XDG_CACHE_HOME/openjfx" # moves .openjfx
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
-alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
 
 export DOTFILES="$XDG_DATA_HOME/dotfiles"
 

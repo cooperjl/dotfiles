@@ -18,6 +18,7 @@ alias lf=lfub
 alias hx=helix
 alias steamtinkerlaunch="flatpak run --command=steamtinkerlaunch com.valvesoftware.Steam"
 alias protontricks="flatpak run com.github.Matoking.protontricks"
+alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
 
 # Completion
 autoload -Uz compinit
