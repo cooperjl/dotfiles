@@ -72,6 +72,7 @@ cmp.setup({
         end, { 'i', 's', }),
     }),
     sources = cmp.config.sources({
+        { name = 'treesutter', priority = 6 },
         { name = 'nvim_lsp', priority = 5 },
         { name = 'buffer', priority = 4 },
         { name = 'luasnip', priority = 2 },

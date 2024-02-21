@@ -1,0 +1,6 @@
+[Context]
+filesystems=!home
+persistent=.xlcore
+
+[Environment]
+Dgcrypt=false

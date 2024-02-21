@@ -121,6 +121,8 @@ globalkeys = gears.table.join(
     awful.key({ modkey, shift }, "s", function () awful.util.spawn("flameshot gui") end,
               {description = "screenshot", group = "launcher"}),
 
+    awful.key({ modkey }, "F10", function () awful.util.spawn("/home/stock/.local/share/replay/save-replay.sh") end,
+              {description = "game clip", group = "launcher"}),
     -- ---->> own ends ig <<----
 
     awful.key({ modkey }, "x",

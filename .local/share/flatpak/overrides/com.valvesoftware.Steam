@@ -1,0 +1,8 @@
+[Context]
+filesystems=~/Games;/home/stock/.local/share/Steam/steamapps
+
+[Environment]
+LD_PRELOAD=/home/stock/.var/app/com.valvesoftware.Steam/data/Steam/ubuntu12_64/gameoverlayrenderer.so
+
+[Session Bus Policy]
+org.freedesktop.Flatpak=talk

@@ -1,5 +1,6 @@
 local awful = require("awful")
 local beautiful = require("beautiful")
+local naughty = require("naughty")
 
 
 -- Rules. 
@@ -28,8 +29,6 @@ awful.rules.rules = {
           "Tor Browser", -- Needs a fixed window size to avoid fingerprinting by screen size.
         },
 
-        name = { },
-
         role = { "pop-up", }
 
       }, properties = { floating = true }
@@ -39,4 +38,20 @@ awful.rules.rules = {
     { rule_any = { type = { "normal", "dialog" }
       }, properties = { titlebars_enabled = false }
     },
+
+    -- rule to pin discord popout in corner, ontop implied by signal in signals.lua
+    -- width and height just manually played with, x=1920-width-4(border), y = 1080-height-4(border)
+    { rule = { class = "discord", name = "Discord Popout" },
+      properties = {
+        floating = true,
+        sticky = true,
+        width = 497,
+        height = 305,
+        x = 1419,
+        y = 771,
+      }
+    },
+
+    -- debug rule to find properties of windows
+    --{rule = {}, callback = function(c) naughty.notify{ title="new window", text = c.name } end },
 }

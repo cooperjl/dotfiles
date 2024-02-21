@@ -2,8 +2,8 @@ set shell sh
 set shellopts '-eu'
 set ifs "\n"
 set scrolloff 10
-set cleaner '~/.config/lf/cleaner'
-set previewer '~/.config/lf/preview'
+# set cleaner '~/.config/lf/cleaner'
+# set previewer '~/.config/lf/preview'
 set period 1
 set icons true
 

@@ -5,6 +5,8 @@ stty stop undef
 
 PS1="[%n@%m %~]$%b "
 
+#PS1="[Y3918850 %~]$%b "
+
 HISTFILE="$XDG_STATE_HOME/zsh/history"
 HISTSIZE=10000000
 SAVEHIST=10000000
@@ -14,10 +16,11 @@ unsetopt beep
 # Aliases
 alias dotcfg="git --git-dir=$DOTFILES --work-tree=$HOME"
 alias nvidia-settings="nvidia-settings --config='$XDG_CONFIG_HOME'/nvidia/settings"
-alias lf=lfub
+#alias lf=lfub
 alias hx=helix
 alias steamtinkerlaunch="flatpak run --command=steamtinkerlaunch com.valvesoftware.Steam"
 alias protontricks="flatpak run com.github.Matoking.protontricks"
+alias protontricks-launch="flatpak run --command=protontricks-launch com.github.Matoking.protontricks"
 alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
 
 # Completion
