@@ -1,4 +1,4 @@
--- Settings
+-- settings
 modkey = "Mod4"
 
 terminal = "alacritty"
@@ -10,4 +10,3 @@ awesome.set_preferred_icon_size(32)
 require("config.bar")
 require("config.keys")
 require("config.rules")
---require("config.signals")
