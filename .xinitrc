@@ -16,13 +16,6 @@ fi
 setxkbmap -layout gb
 xsetroot -cursor_name left_ptr
 
-# --> Starting wm <--
-
-# Remember to change $XDG_CURRENT_DESKTOP in $HOME/.zprofile
-
-# bspwm
-#sxhkd &
-#exec bspwm 
-
-# awesome
+# start wm
+# update $XDG_CURRENT_DESKTOP in ~/.config/zsh/.zprofile
 exec awesome
