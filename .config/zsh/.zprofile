@@ -1,7 +1,5 @@
 #!/bin/zsh
 
-export PATH="$PATH:${$(find ~/.local/bin -type d -printf %p:)%%:}"
-
 unsetopt PROMPT_SP
 
 # Theme
@@ -34,6 +32,7 @@ export GOPATH="$XDG_DATA_HOME/go"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 # Java
+export JAVA_HOME="/usr/lib/jvm/java-17-openjdk/"
 export JAVA_TOOL_OPTIONS="-Djavafx.cachedir=$XDG_CACHE_HOME/openjfx" # moves .openjfx
 export _JAVA_OPTIONS="-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java"
 export GRADLE_USER_HOME="$XDG_DATA_HOME/gradle"
@@ -52,7 +51,12 @@ export TEXMFCONFIG="$XDG_CONFIG_HOME/texlive/texmf-config"
 
 export DOTFILES="$XDG_DATA_HOME/dotfiles"
 
-export JAVA_HOME="/usr/lib/jvm/java-17-openjdk/"
+# Path
+[[ -d "$HOME/.local/bin" ]] && export PATH="$HOME/.local/bin:$PATH"
+[[ -d "$PYENV_ROOT/bin" ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+[[ -d "$CARGO_HOME/bin" ]] && export PATH="$CARGO_HOME/bin:$PATH"
+
+# export PATH="$HOME/.local/bin:$CARGO_HOME/bin:$PYENV_ROOT/bin:$PATH"
 
 # Start x11
 if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then

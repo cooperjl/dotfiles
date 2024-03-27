@@ -1,6 +1,3 @@
-# A lot borrowed from Luke Smith's voidrice
-# https://github.com/LukeSmithxyz/voidrice/
-
 stty stop undef
 
 PS1="[%n@%m %~]$%b "
@@ -20,6 +17,7 @@ alias steamtinkerlaunch="flatpak run --command=steamtinkerlaunch com.valvesoftwa
 alias protontricks="flatpak run com.github.Matoking.protontricks"
 alias protontricks-launch="flatpak run --command=protontricks-launch com.github.Matoking.protontricks"
 alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
+
 
 # Completion
 autoload -Uz compinit
@@ -68,8 +66,7 @@ if [ -f "$LFCD" ]; then
   source "$LFCD"
 fi
 
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+eval "$(starship init zsh)"
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh 2>/dev/null

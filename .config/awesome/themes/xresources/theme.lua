@@ -130,7 +130,7 @@ local is_dark_bg = (bg_numberic_value < 383)
 --end
 
 
-theme.wallpaper = "~/Pictures/wallpapers/fog_forest.jpeg"
+theme.wallpaper = "~/Pictures/wallpapers/gruvbox_astro.jpg"
 return theme
 
 -- vim: filetype=lua:expandtab:shiftwidth=4:tabstop=8:softtabstop=4:textwidth=80

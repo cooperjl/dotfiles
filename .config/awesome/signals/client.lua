@@ -1,15 +1,11 @@
 local gears = require("gears")
 local awful = require("awful")
-
+require("awful.autofocus")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 
--- Signal function to execute when a new client appears.
+-- put new clients at the end of others.
 client.connect_signal("manage", function (c)
-    -- Set the windows at the slave,
-    -- i.e. put it at the end of others instead of setting it master.
-    -- if not awesome.startup then awful.client.setslave(c) end
-
     if awesome.startup
       and not c.size_hints.user_position
       and not c.size_hints.program_position then
@@ -63,15 +59,6 @@ client.connect_signal("mouse::enter", function(c)
     c:emit_signal("request::activate", "mouse_enter", {raise = false})
 end)
 
--- Mine stolen from overflow, floating should mean ontop
---client.connect_signal("property::floating", function(c)
---    if c.floating then
---        c.ontop = true
---    else
---        c.ontop = false
---   end
---end)
-
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 
@@ -89,29 +76,4 @@ client.connect_signal("property::fullscreen", function(c)
         end)
     end
 end)
-
--- Steam games, hacky because rules are weird
--- (can only use client properties, not rule properties when looking)
--- This fix is not currently being used (see above signal)
--- Code remains incase I ever need it, above fix still in testing.
-
--- awesome.register_xproperty("STEAM_GAME", "number")
-
--- Most games start on fullscreen, can be enabled if I find some which do not
-
---client.connect_signal("manage", function(c)
---  if c:get_xproperty("STEAM_GAME") ~= nil then c.fullscreen = true end 
---end) 
-
--- Some games will exit fullscreen (e.g. FROMSOFTWARE games), so stop them exiting
--- limitations:
--- 1. you CANNOT exit fullscreen in a game with keybind
--- 2. if the game has a terminal, or launcher, or other window that also opens 
---    it becomes problematic as that will also be fullscreened.
---    This is especially an issue with a terminal as it will be fullscreen at the
---    same time as the game, which caused visual glitches in my testing.
-
---client.connect_signal("property::fullscreen", function(c)
---  if c:get_xproperty("STEAM_GAME") ~= nil then c.fullscreen = true end
---end) 
 

@@ -2,7 +2,6 @@ local awful = require("awful")
 local beautiful = require("beautiful")
 local naughty = require("naughty")
 
-
 -- Rules. 
 awful.rules.rules = {
     -- All clients will match this rule.
@@ -41,7 +40,7 @@ awful.rules.rules = {
 
     -- rule to pin discord popout in corner, ontop implied by signal in signals.lua
     -- width and height just manually played with, x=1920-width-4(border), y = 1080-height-4(border)
-    { rule = { class = "discord", name = "Discord Popout" },
+    { rule = { class = "discord" , name = "Discord Popout" },
       properties = {
         floating = true,
         sticky = true,
@@ -51,6 +50,27 @@ awful.rules.rules = {
         y = 771,
       }
     },
+
+    { rule = { class = "vesktop" , name = "Discord Popout" },
+      properties = {
+        floating = true,
+        sticky = true,
+        ontop = true,
+        width = 800,
+        height = 450,
+        x = 1756,
+        y = 986,
+      }
+    },
+
+    { rule = { name = "movie-web" },
+      properties = {
+        floating = false,
+        maximized = false,
+        titlebars_enabled = false,
+      }
+    },
+
 
     -- debug rule to find properties of windows
     --{rule = {}, callback = function(c) naughty.notify{ title="new window", text = c.name } end },

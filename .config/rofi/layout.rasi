@@ -28,7 +28,7 @@ configuration {
 
 /*****----- Global Properties -----*****/
 
-@import "everforest.rasi"
+@import "gruvbox-material.rasi"
 
 * {
     border-colour:               var(selected);

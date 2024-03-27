@@ -3,17 +3,17 @@
 pcall(require, "luarocks.loader")
 
 -- Standard awesome library
-local gears = require("gears")
+--local gears = require("gears")
 local awful = require("awful")
-require("awful.autofocus")
+--require("awful.autofocus")
 -- Widget and layout library
-local wibox = require("wibox")
+--local wibox = require("wibox")
 -- Theme handling library
 local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
-local menubar = require("menubar")
-local hotkeys_popup = require("awful.hotkeys_popup")
+--local menubar = require("menubar")
+--local hotkeys_popup = require("awful.hotkeys_popup")
 
 -- Enable hotkeys help widget for VIM and other apps
 -- I found this to be buggy and always display TMUX for some reason, so disabled.
@@ -21,37 +21,40 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 
 -- Theming
 
-local theme_path = string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), "xresources")
+--awesome.set_preferred_icon_size(32)
+local theme_path = string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), "gruvbox-material")
 beautiful.init(theme_path)
 
 require("config")
+require("signals")
 
+-- notification size
 naughty.config.defaults['icon_size'] = 80
 
 -- Error handling
 
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
-if awesome.startup_errors then
-    naughty.notify({ preset = naughty.config.presets.critical,
-                     title = "Oops, there were errors during startup!",
-                     text = awesome.startup_errors })
-end
+--if awesome.startup_errors then
+--    naughty.notify({ preset = naughty.config.presets.critical,
+--                     title = "Oops, there were errors during startup!",
+--                     text = awesome.startup_errors })
+--end
 
 -- Handle runtime errors after startup
-do
-    local in_error = false
-    awesome.connect_signal("debug::error", function (err)
-        -- Make sure we don't go into an endless error loop
-        if in_error then return end
-        in_error = true
+--do
+--    local in_error = false
+--    awesome.connect_signal("debug::error", function (err)
+ --       -- Make sure we don't go into an endless error loop
+ --       if in_error then return end
+ --       in_error = true
 
-        naughty.notify({ preset = naughty.config.presets.critical,
-                         title = "Oops, an error happened!",
-                         text = tostring(err) })
-        in_error = false
-    end)
-end
+--        naughty.notify({ preset = naughty.config.presets.critical,
+--                         title = "Oops, an error happened!",
+--                         text = tostring(err) })
+--        in_error = false
+--    end)
+--end
 
 -- spawn apps:
 awful.spawn.single_instance("nm-applet")
