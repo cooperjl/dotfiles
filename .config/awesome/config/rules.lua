@@ -44,10 +44,11 @@ awful.rules.rules = {
       properties = {
         floating = true,
         sticky = true,
-        width = 497,
-        height = 305,
-        x = 1419,
-        y = 771,
+        ontop = true,
+        width = 800,
+        height = 450,
+        x = 1756,
+        y = 986,
       }
     },
 

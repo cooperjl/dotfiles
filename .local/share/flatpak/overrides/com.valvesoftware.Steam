@@ -1,5 +1,6 @@
 [Context]
-filesystems=~/Games;/home/stock/.local/share/Steam/steamapps
+sockets=system-bus;session-bus
+filesystems=/home/stock/.local/share/Steam/steamapps;~/Games
 
 [Environment]
 LD_PRELOAD=/home/stock/.var/app/com.valvesoftware.Steam/data/Steam/ubuntu12_64/gameoverlayrenderer.so

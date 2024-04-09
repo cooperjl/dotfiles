@@ -9,21 +9,8 @@ formatters.setup({
 })
 
 lvim.plugins = {
-  -- IDE
   "sainnhe/gruvbox-material",
-  -- {
-  -- "neanias/everforest-nvim",
-  -- version = false,
-  -- lazy = false,
-  -- priority = 1000, -- make sure to load this before all the other start plugins
-  -- config = function()
-  --   require("everforest").setup({
-  --     background = "hard",
-  --   })
-  -- end,
-  -- },
 
-  -- Languages
   -- Rust
   {
     "simrat39/rust-tools.nvim",
@@ -100,4 +87,3 @@ lvim.builtin.cmp.window.completion.winhighlight = "FloatBorder:NormalFloat"
 
 lvim.builtin.cmp.window.documentation.border = "none"
 lvim.builtin.cmp.window.documentation.winhighlight = "FloatBorder:NormalFloat"
-
