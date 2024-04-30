@@ -2,14 +2,17 @@
 
 unsetopt PROMPT_SP
 
+export LIBSEAT_BACKEND=logind
+
 # Theme
 export QT_STYLE_OVERRIDE=Adwaita-dark
 
 # Default programs
-export EDITOR="lvim"
+#export SHELL="/usr/bin/zsh"
+export EDITOR="nvim"
 export TERMINAL="alacritty"
 export BROWSER="firefox"
-export XDG_CURRENT_DESKTOP="awesome"
+export XDG_CURRENT_DESKTOP="river"
 
 # Fix games minimising when switching out.
 export SDL_VIDEO_MINIMIZE_ON_FOCUS_LOSS=0 
@@ -57,9 +60,4 @@ export DOTFILES="$XDG_DATA_HOME/dotfiles"
 [[ -d "$PYENV_ROOT/bin" ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 [[ -d "$CARGO_HOME/bin" ]] && export PATH="$CARGO_HOME/bin:$PATH"
 
-# export PATH="$HOME/.local/bin:$CARGO_HOME/bin:$PYENV_ROOT/bin:$PATH"
-
-# Start x11
-if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-  exec startx
-fi
+export PATH="$HOME/.local/bin:$CARGO_HOME/bin:$PYENV_ROOT/bin:$PATH"

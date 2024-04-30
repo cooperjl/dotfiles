@@ -12,7 +12,6 @@ unsetopt beep
 alias dotcfg="git --git-dir=$DOTFILES --work-tree=$HOME"
 alias nvidia-settings="nvidia-settings --config='$XDG_CONFIG_HOME'/nvidia/settings"
 #alias lf=lfub
-alias hx=helix
 alias steamtinkerlaunch="flatpak run --command=steamtinkerlaunch com.valvesoftware.Steam"
 alias protontricks="flatpak run com.github.Matoking.protontricks"
 alias protontricks-launch="flatpak run --command=protontricks-launch com.github.Matoking.protontricks"
@@ -66,7 +65,7 @@ if [ -f "$LFCD" ]; then
   source "$LFCD"
 fi
 
-eval "$(pyenv init -)"
-eval "$(starship init zsh)"
+#eval "$(pyenv init -)"
+#eval "$(starship init zsh)"
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh 2>/dev/null
