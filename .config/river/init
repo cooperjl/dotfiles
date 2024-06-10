@@ -1,0 +1,9 @@
+#!/bin/sh
+
+source $XDG_CONFIG_HOME/river/config
+source $XDG_CONFIG_HOME/river/autostart
+source $XDG_CONFIG_HOME/river/mappings
+source $XDG_CONFIG_HOME/river/rules
+
+# useful for debugging
+# notify-send "River" "River has been (re)started"

@@ -1,17 +1,16 @@
 #!/bin/zsh
 
-unsetopt PROMPT_SP
+# .zshenv - file to configure zsh environment variables
+
+export ZDOTDIR=${XDG_CONFIG_HOME:=~/.config}/zsh
 
 export LIBSEAT_BACKEND=logind
-
-# Theme
-export QT_STYLE_OVERRIDE=Adwaita-dark
+export MOZ_ENABLE_WAYLAND=1
 
 # Default programs
-#export SHELL="/usr/bin/zsh"
-export EDITOR="nvim"
-export TERMINAL="alacritty"
-export BROWSER="firefox"
+export EDITOR="lvim"
+export TERMINAL="foot"
+export BROWSER="librewolf"
 export XDG_CURRENT_DESKTOP="river"
 
 # Fix games minimising when switching out.
@@ -36,7 +35,6 @@ export GOPATH="$XDG_DATA_HOME/go"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 # Java
-export JAVA_HOME="/usr/lib/jvm/java-17-openjdk/"
 export JAVA_TOOL_OPTIONS="-Djavafx.cachedir=$XDG_CACHE_HOME/openjfx" # moves .openjfx
 export _JAVA_OPTIONS="-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java"
 export GRADLE_USER_HOME="$XDG_DATA_HOME/gradle"
@@ -52,6 +50,8 @@ export PYENV_ROOT="$XDG_DATA_HOME/pyenv"
 export TEXMFHOME="$XDG_DATA_HOME/texmf"
 export TEXMFVAR="$XDG_CACHE_HOME/texlive/texmf-var"
 export TEXMFCONFIG="$XDG_CONFIG_HOME/texlive/texmf-config"
+
+export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/config.toml"
 
 export DOTFILES="$XDG_DATA_HOME/dotfiles"
 

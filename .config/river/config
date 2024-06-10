@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# variables
+WOBSOCK=$XDG_RUNTIME_DIR/wob.sock
+
+# configs
+# keyboard
+riverctl keyboard-layout us
+riverctl set-repeat 50 300
+
+# colours
+riverctl background-color 0x414868
+riverctl border-color-focused 0xa9b1d6
+riverctl border-color-unfocused 0x1a1b26
+riverctl border-width 2
+
+riverctl default-layout rivertile
+rivertile -view-padding 4 -outer-padding 4 &

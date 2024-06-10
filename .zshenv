@@ -1,3 +1,1 @@
-#!/bin/zsh
-
-ZDOTDIR=${XDG_CONFIG_HOME:=~/.config}/zsh
+/home/stock2/.config/zsh/.zshenv
