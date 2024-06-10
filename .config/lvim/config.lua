@@ -112,6 +112,13 @@ lvim.plugins = {
   },
 }
 
+-- Disable automatic lsp installation
+lvim.lsp.automatic_servers_installation = false
+
+-- 
+require("lvim.lsp.manager").setup("marksman")
+
+
 lvim.colorscheme = "tokyonight"
 
 -- vim.g.gruvbox_material_background="hard"

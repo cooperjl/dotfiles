@@ -65,7 +65,11 @@ if [ -f "$LFCD" ]; then
   source "$LFCD"
 fi
 
+# ssh thing
+if [[ -z "${SSH_CONNECTION}" ]]; then
+    export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+fi
 #eval "$(pyenv init -)"
-#eval "$(starship init zsh)"
+eval "$(starship init zsh)"
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh 2>/dev/null
