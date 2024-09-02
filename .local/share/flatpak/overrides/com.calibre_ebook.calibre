@@ -2,4 +2,4 @@
 filesystems=home
 
 [Environment]
-CALIBRE_TEMP_DIR=/home/stock/Downloads/Books/me/tmp
+CALIBRE_TEMP_DIR=/home/stock/tmp/books/me/tmp

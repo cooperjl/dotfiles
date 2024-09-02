@@ -1,9 +1,6 @@
-# All unused folders are just sent to $HOME/tmp, this folder's main
-# use is for downloads so define that first for icons in file managers
-# we define XDG_DESKTOP_DIR for src to give it a special icon
 XDG_DOWNLOAD_DIR="$HOME/tmp"
-XDG_DESKTOP_DIR="$HOME/src"
-XDG_TEMPLATES_DIR="$HOME/tmp"
+XDG_DESKTOP_DIR="$HOME/desktop"
+XDG_TEMPLATES_DIR="$HOME/guides"
 XDG_PUBLICSHARE_DIR="$HOME/tmp"
 XDG_DOCUMENTS_DIR="$HOME/documents"
 XDG_MUSIC_DIR="$HOME/music"

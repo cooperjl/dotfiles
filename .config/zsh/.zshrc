@@ -11,12 +11,7 @@ unsetopt beep
 # Aliases
 alias dotcfg="git --git-dir=$DOTFILES --work-tree=$HOME"
 alias nvidia-settings="nvidia-settings --config='$XDG_CONFIG_HOME'/nvidia/settings"
-#alias lf=lfub
-alias steamtinkerlaunch="flatpak run --command=steamtinkerlaunch com.valvesoftware.Steam"
-alias protontricks="flatpak run com.github.Matoking.protontricks"
-alias protontricks-launch="flatpak run --command=protontricks-launch com.github.Matoking.protontricks"
 alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
-
 
 # Completion
 autoload -Uz compinit

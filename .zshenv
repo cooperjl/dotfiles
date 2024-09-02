@@ -1,1 +1,1 @@
-/home/stock2/.config/zsh/.zshenv
+.config/zsh/.zshenv
