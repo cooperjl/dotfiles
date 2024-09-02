@@ -1,0 +1,229 @@
+textfont: &textfont Jetbrains Mono Nerd Font:style=Medium:size=12
+iconfont: &iconfont Jetbrains Mono Nerd Font:style=Medium:size=14
+
+# tokyo night
+fg_default: &fg_default c0caf5ff
+bg_default: &bg_default 1a1b26ff
+bg_selected: &bg_selected {background: {color: a9b1d6ff}}
+bg_urgent: &bg_urgent {background: {color: D08770ff}}
+
+river_accent: &river_accent f7768eff
+
+time_default: &time_default 73dacaff
+date_default: &date_default b4f9f8ff
+
+battery_default: &battery_default 9ece6aff
+battery_low: &battery_low ff9e64ff
+battery_urgent: &battery_urgent f7768eff
+
+wifi_default: &wifi_default bb9af7ff
+wifi_down: &wifi_down bb9af766
+
+audio_on: &audio_on 7aa2f7ff
+audio_off: &audio_off e0af68ff
+
+backlight: &backlight cfc9c2ff
+
+power: &power 2ac3deff
+
+bar:
+  height: 26
+  location: top
+  spacing: 4
+  right-margin: 6 # Give a margin to the right side of the bar only
+
+  font: *textfont
+  
+  foreground: *fg_default
+  background: *bg_default
+
+  left:
+    - river:
+        anchors:
+          - base: &river_base
+              left-margin: 6
+              right-margin: 6
+              default: {string: {text: , font: *textfont}}
+              conditions:
+                id == 1: {string: {text: 1, font: *textfont}}
+                id == 2: {string: {text: 2, font: *textfont}}
+                id == 3: {string: {text: 3, font: *textfont}}
+                id == 4: {string: {text: 4, font: *textfont}}
+                id == 5: {string: {text: 5, font: *textfont}}
+                id == 6: {string: {text: 6, font: *textfont}}
+                id == 7: {string: {text: 7, font: *textfont}}
+                id == 8: {string: {text: 8, font: *textfont}}
+                id == 9: {string: {text: 9, font: *textfont}}
+
+        content:
+          map:
+            on-click:
+              left: sh -c "riverctl set-focused-tags $((1 << ({id} - 1)))"
+              right: sh -c "riverctl toggle-focused-tags $((1 << ({id} - 1)))"
+              middle: sh -c "riverctl toggle-view-tags $((1 << ({id} - 1)))"
+            conditions:
+              state == urgent:
+                map:
+                  <<: *river_base
+                  deco: *bg_urgent
+              state == focused:
+                map:
+                  <<: *river_base
+                  foreground: *bg_default
+                  deco: *bg_selected
+              state == visible && ~occupied:
+                map:
+                  <<: *river_base
+              state == visible && occupied:
+                map:
+                  <<: *river_base
+                  deco: *bg_selected
+              state == unfocused:
+                map:
+                  <<: *river_base
+              state == invisible && ~occupied: {empty: {}}
+              state == invisible && occupied:
+                map:
+                  <<: *river_base
+                  deco: {underline: {size: 3, color: *river_accent}}
+    
+    - foreign-toplevel:
+        content:
+          map:
+            conditions:
+              ~activated: {empty: {}}
+              activated:
+                - string: {text: "{app-id}", foreground: *river_accent}
+                - string: {text: ": {title}", max: 40}
+  
+  center:
+    - clock:
+        date-format: "%Y-%m-%d"
+        time-format: "%H:%M"
+        content:
+          - string: {text: 󰃭, foreground: *date_default, font: *iconfont, right-margin: 6}
+          - string: {text: "{date}", foreground: *date_default, right-margin: 6}
+          - string: {text: 󰅐, foreground: *time_default, font: *iconfont, right-margin: 6}
+          - string: {text: "{time}", foreground: *time_default}
+
+  right:
+    - network:
+        poll-interval: 1000
+        content:
+          map:
+            default: {empty: {}}
+            conditions:
+              name == wlan0:
+                map:
+                  default: {string: {text: 󰖩, font: *iconfont, foreground: *wifi_down}}
+                  conditions:
+                    state == down: {string: {text: 󰖪, font: *iconfont, foreground: *wifi_default}}
+                    state == up:
+                      - string: {text: 󰖩, foreground: *wifi_default, font: *iconfont}
+                      - string: {text: "{ssid}", foreground: *wifi_default, left-margin: 6}
+    - pipewire:
+        content:
+          - map:
+              margin: 2
+              conditions:
+                type == "sink":
+                  - ramp:
+                      tag: cubic_volume
+                      items:
+                        - list:
+                            spacing: 3
+                            items:
+                              - string: {text: "󰕿", font: *iconfont, foreground: *audio_on}
+                              - string: {text: "{cubic_volume}%", font: *textfont, foreground: *audio_on}
+                        - list:
+                            spacing: 3
+                            items:
+                              - string: {text: "󰖀", font: *iconfont, foreground: *audio_on}
+                              - string: {text: "{cubic_volume}%", font: *textfont, foreground: *audio_on}
+                        - list:
+                            spacing: 3
+                            items:
+                              - string: {text: "󰕾", font: *iconfont, foreground: *audio_on}
+                              - string: {text: "{cubic_volume}%", font: *textfont, foreground: *audio_on}
+    - battery:
+        name: BAT0
+        poll-interval: 10000
+        anchors:
+          discharging: &discharging
+            - ramp:
+                tag: capacity
+                items:
+                  - list:
+                      spacing: 2
+                      items:
+                      - string: {text: "󰁺", foreground: *battery_urgent, font: *iconfont}
+                      - string: {text: "{capacity}% {estimate}", foreground: *battery_urgent, font: *textfont}
+                  - list:
+                      spacing: 2
+                      items:
+                      - string: {text: "󰁻", foreground: *battery_low, font: *iconfont}
+                      - string: {text: "{capacity}% {estimate}", foreground: *battery_low, font: *textfont}
+                  - list:
+                      spacing: 2
+                      items:
+                      - string: {text: "󰁼", foreground: *battery_low, font: *iconfont}
+                      - string: {text: "{capacity}% {estimate}", foreground: *battery_low, font: *textfont}
+                  - list:
+                      spacing: 2
+                      items:
+                      - string: {text: "󰁽", foreground: *battery_default, font: *iconfont}
+                      - string: {text: "{capacity}% {estimate}", foreground: *battery_default, font: *textfont}
+                  - list:
+                      spacing: 2
+                      items:
+                      - string: {text: "󰁾", foreground: *battery_default, font: *iconfont}
+                      - string: {text: "{capacity}% {estimate}", foreground: *battery_default, font: *textfont}
+                  - list:
+                      spacing: 2
+                      items:
+                      - string: {text: "󰁿", foreground: *battery_default, font: *iconfont}
+                      - string: {text: "{capacity}% {estimate}", foreground: *battery_default, font: *textfont}
+                  - list:
+                      spacing: 2
+                      items:
+                      - string: {text: "󰂀", foreground: *battery_default, font: *iconfont}
+                      - string: {text: "{capacity}% {estimate}", foreground: *battery_default, font: *textfont}
+                  - list:
+                      spacing: 2
+                      items:
+                      - string: {text: "󰂁", foreground: *battery_default, font: *iconfont}
+                      - string: {text: "{capacity}% {estimate}", foreground: *battery_default, font: *textfont}
+                  - list:
+                      spacing: 2
+                      items:
+                      - string: {text: "󰂂", foreground: *battery_default, font: *iconfont}
+                      - string: {text: "{capacity}% {estimate}", foreground: *battery_default, font: *textfont}
+                  - list:
+                      spacing: 2
+                      items:
+                      - string: {text: "󰁹", foreground: *battery_default, font: *iconfont}
+                      - string: {text: "{capacity}% {estimate}", foreground: *battery_default, font: *textfont}
+        content:
+          map:
+            conditions:
+              state == unknown:
+                <<: *discharging
+              state == discharging:
+                <<: *discharging
+              state == charging:
+                - string: {text: 󰂄, foreground: *battery_default, font: *iconfont}
+                - string: {text: "{capacity}% {estimate}", foreground: *battery_default, font: *textfont, left-margin: 2}
+              state == full:
+                - string: {text: 󰁹, foreground: *battery_default, font: *iconfont}
+                - string: {text: "{capacity}% full", foreground: *battery_default, font: *textfont, left-margin: 2}
+              state == "not charging":
+                - string: {text: 󱞜, foreground: *battery_default, font: *iconfont}
+                - string: {text: "{capacity}%", foreground: *battery_default, font: *textfont, left-margin: 2}
+    - label:
+        content:
+          string:
+            on-click: systemctl poweroff
+            text: "󰐥"
+            font: *iconfont
+            foreground: *power
+            right-margin: 2

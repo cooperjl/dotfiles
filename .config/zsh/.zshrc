@@ -11,13 +11,7 @@ unsetopt beep
 # Aliases
 alias dotcfg="git --git-dir=$DOTFILES --work-tree=$HOME"
 alias nvidia-settings="nvidia-settings --config='$XDG_CONFIG_HOME'/nvidia/settings"
-#alias lf=lfub
-alias hx=helix
-alias steamtinkerlaunch="flatpak run --command=steamtinkerlaunch com.valvesoftware.Steam"
-alias protontricks="flatpak run com.github.Matoking.protontricks"
-alias protontricks-launch="flatpak run --command=protontricks-launch com.github.Matoking.protontricks"
 alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
-
 
 # Completion
 autoload -Uz compinit
@@ -66,7 +60,11 @@ if [ -f "$LFCD" ]; then
   source "$LFCD"
 fi
 
-eval "$(pyenv init -)"
+# ssh thing
+if [[ -z "${SSH_CONNECTION}" ]]; then
+    export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+fi
+#eval "$(pyenv init -)"
 eval "$(starship init zsh)"
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh 2>/dev/null
