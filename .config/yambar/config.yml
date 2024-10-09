@@ -1,11 +1,11 @@
-textfont: &textfont Jetbrains Mono Nerd Font:style=Medium:size=12
-iconfont: &iconfont Jetbrains Mono Nerd Font:style=Medium:size=14
+textfont: &textfont IosevkaTermNerdFont:size=13
+iconfont: &iconfont IosevkaTermNerdFont:size=13
 
 # tokyo night
 fg_default: &fg_default c0caf5ff
 bg_default: &bg_default 1a1b26ff
-bg_selected: &bg_selected {background: {color: a9b1d6ff}}
-bg_urgent: &bg_urgent {background: {color: D08770ff}}
+bg_selected: &bg_selected {background: {color: 313244ff}}
+bg_urgent: &bg_urgent {background: {color: d08770ff}}
 
 river_accent: &river_accent f7768eff
 
@@ -19,15 +19,13 @@ battery_urgent: &battery_urgent f7768eff
 wifi_default: &wifi_default bb9af7ff
 wifi_down: &wifi_down bb9af766
 
-audio_on: &audio_on 7aa2f7ff
-audio_off: &audio_off e0af68ff
-
-backlight: &backlight cfc9c2ff
-
+cpu: &cpu f7768eff
+mem: &mem e0af68ff
+audio: &audio 7aa2f7ff
 power: &power 2ac3deff
 
 bar:
-  height: 26
+  height: 22
   location: top
   spacing: 4
   right-margin: 6 # Give a margin to the right side of the bar only
@@ -69,8 +67,10 @@ bar:
               state == focused:
                 map:
                   <<: *river_base
-                  foreground: *bg_default
-                  deco: *bg_selected
+                  deco: 
+                    stack:
+                      - background: {color: 414868AA}
+                      - underline: {size: 2, color: *fg_default}
               state == visible && ~occupied:
                 map:
                   <<: *river_base
@@ -85,7 +85,6 @@ bar:
               state == invisible && occupied:
                 map:
                   <<: *river_base
-                  deco: {underline: {size: 3, color: *river_accent}}
     
     - foreign-toplevel:
         content:
@@ -94,7 +93,7 @@ bar:
               ~activated: {empty: {}}
               activated:
                 - string: {text: "{app-id}", foreground: *river_accent}
-                - string: {text: ": {title}", max: 40}
+                - string: {text: ": {title}", max: 80}
   
   center:
     - clock:
@@ -107,6 +106,48 @@ bar:
           - string: {text: "{time}", foreground: *time_default}
 
   right:
+    - cpu:
+        poll-interval: 2500
+        content:
+          map:
+            conditions:
+              id < 0:
+                - string: {text: , font: *iconfont, foreground: *cpu, right-margin: 8}
+                - string: {text: "{cpu:2}%", foreground: *cpu}
+    - mem:
+        poll-interval: 2500
+        content:
+          - string: {text: ,  font: *iconfont, foreground: *mem, right-margin: 8}
+          - string: {text: "{percent_used:2}%", foreground: *mem}
+    - pipewire:
+        content:
+          - map:
+              margin: 2
+              conditions:
+                type == "sink":
+                  map:
+                    conditions:
+                      muted || cubic_volume == 0: 
+                        - string: {text: 󰝟, font: *iconfont, foreground: *audio, right-margin: 3}
+                    default:
+                      - ramp:
+                          tag: cubic_volume
+                          items:
+                            - list:
+                                spacing: 3
+                                items:
+                                  - string: {text: 󰕿, font: *iconfont, foreground: *audio}
+                                  - string: {text: "{cubic_volume:2}%", font: *textfont, foreground: *audio}
+                            - list:
+                                spacing: 3
+                                items:
+                                  - string: {text: 󰖀, font: *iconfont, foreground: *audio}
+                                  - string: {text: "{cubic_volume:2}%", font: *textfont, foreground: *audio}
+                            - list:
+                                spacing: 3
+                                items:
+                                  - string: {text: 󰕾, font: *iconfont, foreground: *audio}
+                                  - string: {text: "{cubic_volume:2}%", font: *textfont, foreground: *audio}
     - network:
         poll-interval: 1000
         content:
@@ -120,31 +161,7 @@ bar:
                     state == down: {string: {text: 󰖪, font: *iconfont, foreground: *wifi_default}}
                     state == up:
                       - string: {text: 󰖩, foreground: *wifi_default, font: *iconfont}
-                      - string: {text: "{ssid}", foreground: *wifi_default, left-margin: 6}
-    - pipewire:
-        content:
-          - map:
-              margin: 2
-              conditions:
-                type == "sink":
-                  - ramp:
-                      tag: cubic_volume
-                      items:
-                        - list:
-                            spacing: 3
-                            items:
-                              - string: {text: "󰕿", font: *iconfont, foreground: *audio_on}
-                              - string: {text: "{cubic_volume}%", font: *textfont, foreground: *audio_on}
-                        - list:
-                            spacing: 3
-                            items:
-                              - string: {text: "󰖀", font: *iconfont, foreground: *audio_on}
-                              - string: {text: "{cubic_volume}%", font: *textfont, foreground: *audio_on}
-                        - list:
-                            spacing: 3
-                            items:
-                              - string: {text: "󰕾", font: *iconfont, foreground: *audio_on}
-                              - string: {text: "{cubic_volume}%", font: *textfont, foreground: *audio_on}
+                      - string: {text: "{ssid}", foreground: *wifi_default, left-margin: 8}
     - battery:
         name: BAT0
         poll-interval: 10000
@@ -226,4 +243,4 @@ bar:
             text: "󰐥"
             font: *iconfont
             foreground: *power
-            right-margin: 2
+            right-margin: 3

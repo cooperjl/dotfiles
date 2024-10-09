@@ -5,6 +5,6 @@
 pgrep -x mako > /dev/null || riverctl spawn mako
 pgrep -x yambar > /dev/null || riverctl spawn yambar
 pgrep -x swayidle > /dev/null || riverctl spawn swayidle
-pgrep -x swaybg > /dev/null || riverctl spawn "swaybg -m fill -i $HOME/pictures/wallpaper/perfectblue.jpg"
+pgrep -x swaybg > /dev/null || riverctl spawn "swaybg -m fill -i $HOME/pictures/wallpaper/wallhaven-gpedg3.jpg"
 pgrep -x wob > /dev/null || riverctl spawn "rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob"
 pgrep -xf "foot --server" > /dev/null || riverctl spawn "foot --server"
