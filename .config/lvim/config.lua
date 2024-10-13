@@ -108,6 +108,14 @@ lvim.plugins = {
       })
     end,
   },
+  -- latex
+  {
+    "lervag/vimtex",
+    lazy = false,
+    init = function()
+      vim.g.vimtex_view_method = "zathura"
+    end
+  },
   {
     "benlubas/molten-nvim",
     version = "^1.0.0",
