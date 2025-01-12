@@ -13,6 +13,7 @@ export TERMINAL="foot"
 export BROWSER="librewolf"
 export XDG_CURRENT_DESKTOP="river"
 
+export TERM="xterm-256color"
 # Fix games minimising when switching out.
 export SDL_VIDEO_MINIMIZE_ON_FOCUS_LOSS=0 
 
