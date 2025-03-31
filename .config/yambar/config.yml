@@ -93,7 +93,7 @@ bar:
               ~activated: {empty: {}}
               activated:
                 - string: {text: "{app-id}", foreground: *river_accent}
-                - string: {text: ": {title}", max: 80}
+                - string: {text: ": {title}", max: 70}
   
   center:
     - clock:
@@ -156,9 +156,9 @@ bar:
             conditions:
               name == wlan0:
                 map:
-                  default: {string: {text: 󰖩, font: *iconfont, foreground: *wifi_down}}
+                  default: {string: {text: "󰖩 ", font: *iconfont, foreground: *wifi_down}}
                   conditions:
-                    state == down: {string: {text: 󰖪, font: *iconfont, foreground: *wifi_default}}
+                    state == down: {string: {text: "󰖪 ", font: *iconfont, foreground: *wifi_default}}
                     state == up:
                       - string: {text: 󰖩, foreground: *wifi_default, font: *iconfont}
                       - string: {text: "{ssid}", foreground: *wifi_default, left-margin: 8}

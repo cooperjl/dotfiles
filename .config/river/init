@@ -1,9 +1,10 @@
-#!/bin/sh
+#!/usr/bin/env fish
 
-. $XDG_CONFIG_HOME/river/config
-. $XDG_CONFIG_HOME/river/autostart
-. $XDG_CONFIG_HOME/river/mappings
-. $XDG_CONFIG_HOME/river/rules
+# variables
+set WOBSOCK $XDG_RUNTIME_DIR/wob.sock
 
-# useful for debugging
-# notify-send "River" "River has been (re)started"
+# source config files
+for file in $XDG_CONFIG_HOME/river/conf.d/*
+  source $file
+end
+

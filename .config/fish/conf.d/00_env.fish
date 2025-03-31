@@ -9,10 +9,14 @@ set -gx TERM xterm-256color
 # default programs
 set -gx EDITOR lvim
 set -gx BROWSER librewolf
-#set -gx XDG_CURRENT_DESKTOP river
+set -gx XDG_CURRENT_DESKTOP river
 
 # fix fullscreen applications minimising when switching
 set -gx SDL_VIDEO_MINIMIZE_ON_FOCUS_LOSS 0
+
+set -gx QT_QPA_PLATFORMTHEME qt6ct
+# make gtk use xwayland for gtk-classic
+set -gx GDK_BACKEND x11
 
 # home cleanup
 set -gx CUDA_CACHE_PATH "$XDG_CACHE_HOME/nv"
