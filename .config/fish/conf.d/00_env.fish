@@ -22,6 +22,7 @@ set -gx WGETRC "$XDG_CONFIG_HOME/wget/wgetrc"
 set -gx STARSHIP_CONFIG "$XDG_CONFIG_HOME/starship/config.toml"
 # language tools
 set -gx GOPATH "$XDG_DATA_HOME/go"
+set -gx GOMODCACHE "$XDG_CACHE_HOME/go/mod"
 set -gx RUSTUP_HOME "$XDG_DATA_HOME/rustup"
 set -gx CARGO_HOME "$XDG_DATA_HOME/cargo"
 set -gx JAVA_TOOL_OPTIONS "-Djavafx.cachedir=$XDG_CACHE_HOME/openjfx"
