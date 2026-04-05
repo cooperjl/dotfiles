@@ -5,8 +5,8 @@ unsetopt PROMPT_SP
 export LIBSEAT_BACKEND=logind
 
 # Theme
-export QT_QPA_PLATFORM=wayland
-export QT_QPA_PLATFORMTHEME=qt6ct
+export QT_STYLE_OVERRIDE=Adwaita-dark
+
 # Default programs
 #export SHELL="/usr/bin/zsh"
 export EDITOR="nvim"
